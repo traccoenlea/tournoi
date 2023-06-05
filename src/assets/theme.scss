@@ -1,0 +1,28 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 10px;
+}
+
+body {
+  box-sizing: 0;
+  margin: 0;
+}
+
+.header {
+  padding: 10px 50px;
+  height: 50px;
+  background: #2c3c5c;
+  a {
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    &:hover {
+      color: cadetblue;
+      transition: 0.3s ease-in-out;
+    }
+  }
+}

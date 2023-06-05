@@ -1,0 +1,62 @@
+.flex {
+  display: flex;
+}
+
+.flexc {
+  flex-direction: column;
+}
+
+.jcc {
+  justify-content: center;
+}
+
+.jca {
+  justify-content: space-around;
+}
+
+.jcb {
+  justify-content: space-between;
+}
+
+.tac {
+  text-align: center;
+}
+
+.tal {
+  text-align: left;
+}
+
+.tar {
+  text-align: right;
+}
+
+.taj {
+  text-align: justify;
+}
+
+.mauto {
+  margin: auto;
+}
+
+.mb30 {
+  margin-bottom: 30px;
+}
+
+.mt30 {
+  margin-top: 30px;
+}
+
+.maw {
+  max-width: 300px;
+}
+
+.btn {
+  max-width: 300px;
+  margin: auto;
+  text-transform: uppercase;
+  padding: 5px;
+  &:hover {
+    background: #000;
+    color: white;
+  }
+}
