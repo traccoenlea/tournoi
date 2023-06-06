@@ -1,10 +1,17 @@
 import * as yup from "yup";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
+import { Fragment, useState } from "react";
+import { addParticipant } from "../apis/participant";
+import { useParams } from "react-router-dom";
 
 export default function NewPoules() {
-  const [inputs, setInputs] = useState(0);
+  const [errorM, setErrorM] = useState(false);
+  const [number, setNumber] = useState(0);
+
+  const id_tour = useParams();
+  console.log(id_tour);
+
   const yupSchema = yup.object({
     number: yup
       .number()
@@ -12,20 +19,61 @@ export default function NewPoules() {
       .min(4)
       .max(40)
       .typeError("Entrez le nombre de participants svp"),
+    participants: yup.array().of(
+      yup.object({
+        name: yup.string().required("Ce champ ne peut être vide"),
+      })
+    ),
   });
+
   const {
     register,
     handleSubmit,
+    clearErrors,
+    reset,
+    control,
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
       number: "",
+      participants: [],
     },
     resolver: yupResolver(yupSchema),
   });
 
+  const { fields, append, remove } = useFieldArray({
+    name: "participants",
+    control,
+  });
+
+  function addPart() {
+    append({
+      name: "",
+    });
+  }
+
+  function deletePart(index) {
+    remove(index);
+  }
+
   async function submit(values) {
-    console.log(values);
+    setNumber(values.number);
+    const participants = values.participants;
+    console.log(participants);
+    try {
+      clearErrors();
+      console.log(participants.length);
+      if (number === participants.length) {
+        setErrorM(false);
+        const response = await addParticipant(participants);
+      } else if (participants.length === 0) {
+        setErrorM(true);
+      } else {
+        setErrorM(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -39,9 +87,35 @@ export default function NewPoules() {
 
       <form onSubmit={handleSubmit(submit)}>
         <label htmlFor="number">Nombre de participants : </label>
-        {/* <input type="number" id="number" name="number" step={4} /> */}
-        <input type="text" id="number" name="number" />
+        <input
+          type="number"
+          id="number"
+          name="number"
+          step={4}
+          min={4}
+          {...register("number")}
+        />
         {errors?.number && <p>{errors.number.message}</p>}
+        <div>
+          Les noms des participants :
+          <button onClick={addPart}>Ajouter un participant</button>
+          <ol>
+            {fields.map((p, i) => (
+              <Fragment key={i}>
+                <li>
+                  <input {...register(`participants[${i}].name`)} type="text" />
+                  <button onClick={() => deletePart(i)}>Supprimer</button>
+                </li>
+                {errors.participants?.length &&
+                  errors.participants[i]?.name && (
+                    <p>{errors.participants[i].name.message}</p>
+                  )}
+              </Fragment>
+            ))}
+          </ol>
+        </div>
+
+        {errorM ? <p>Veuillez entrer {number} participants svp</p> : ""}
 
         <button className="btn" disabled={isSubmitting}>
           Enregistrer
