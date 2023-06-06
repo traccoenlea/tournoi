@@ -4,13 +4,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Fragment, useState } from "react";
 import { addParticipant } from "../apis/participant";
 import { useParams } from "react-router-dom";
+import { addPoule } from "../apis/poule";
 
 export default function NewPoules() {
   const [errorM, setErrorM] = useState(false);
   const [number, setNumber] = useState(0);
 
-  const id_tour = useParams();
-  console.log(id_tour);
+  const params = useParams();
+  const id_tour = parseInt(params.id_tour);
 
   const yupSchema = yup.object({
     number: yup
@@ -59,18 +60,21 @@ export default function NewPoules() {
   async function submit(values) {
     setNumber(values.number);
     const participants = values.participants;
-    console.log(participants);
     try {
       clearErrors();
+
       console.log(participants.length);
       if (number === participants.length) {
-        setErrorM(false);
-        const response = await addParticipant(participants);
-      } else if (participants.length === 0) {
-        setErrorM(true);
+        const response = await addParticipant(participants, id_tour);
+        const randomPoules = await addPoule(number, id_tour);
       } else {
         setErrorM(true);
       }
+
+      // if (number !== 0) {
+      //   console.log(number);
+      //   const poule = await addPoule(number, id_tour);
+      // }
     } catch (error) {
       console.log(error);
     }
