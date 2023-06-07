@@ -8,6 +8,7 @@ import NewTournament from "./pages/NewTournament";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import NewPoules from "./pages/NewPoules";
 import NewEliminations from "./pages/NewEliminations";
+import Tournament from "./pages/Tournament";
 
 export const router = createBrowserRouter([
   {
@@ -48,6 +49,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <NewEliminations />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/tournament/:id_tour",
+        element: (
+          <ProtectedRoute>
+            <Tournament />
           </ProtectedRoute>
         ),
       },

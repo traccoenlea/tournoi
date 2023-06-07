@@ -19,7 +19,7 @@ export default function NewTournament() {
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
-      name: "Tournoi #1",
+      name: "",
       type: "",
     },
     resolver: yupResolver(yupSchema),

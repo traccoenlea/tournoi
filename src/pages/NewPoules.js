@@ -72,11 +72,6 @@ export default function NewPoules() {
       } else {
         setErrorM(true);
       }
-
-      // if (number !== 0) {
-      //   console.log(number);
-      //   const poule = await addPoule(number, id_tour);
-      // }
     } catch (error) {
       console.log(error);
     }

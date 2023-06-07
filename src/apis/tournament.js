@@ -14,17 +14,8 @@ export async function addTournament(values) {
   return backResponse;
 }
 
-// export async function getAllTournaments() {
-//   const response = await fetch(`${API_TOUR}/getAllTournaments`);
-//   return response.json();
-// }
-
-// export async function getTournament(id_tour) {
-//   const response = await fetch(`${API_TOUR}/getTournament?id=${id_tour}`);
-//   return response.json();
-// }
-
-// export async function tourElim(id_tour) {
-//   const response = await fetch(`${API_TOUR}/tourElim?id=${id_tour}`);
-//   return response.json();
-// }
+export async function getUserTournaments(id_user) {
+  console.log("on est là");
+  const response = await fetch(`${API_TOUR}/getUserTournaments?id=${id_user}`);
+  return response.json();
+}
