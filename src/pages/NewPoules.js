@@ -3,10 +3,11 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Fragment, useState } from "react";
 import { addParticipant } from "../apis/participant";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { addPoule } from "../apis/poule";
 
 export default function NewPoules() {
+  const navigate = useNavigate();
   const [errorM, setErrorM] = useState(false);
   const [number, setNumber] = useState(0);
 
@@ -67,6 +68,7 @@ export default function NewPoules() {
       if (number === participants.length) {
         const response = await addParticipant(participants, id_tour);
         const randomPoules = await addPoule(number, id_tour);
+        navigate("/");
       } else {
         setErrorM(true);
       }
