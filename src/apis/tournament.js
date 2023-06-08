@@ -15,7 +15,11 @@ export async function addTournament(values) {
 }
 
 export async function getUserTournaments(id_user) {
-  console.log("on est là");
   const response = await fetch(`${API_TOUR}/getUserTournaments?id=${id_user}`);
+  return response.json();
+}
+
+export async function getAllTournaments() {
+  const response = await fetch(`${API_TOUR}/getAllTournaments`);
   return response.json();
 }

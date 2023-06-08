@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/tournament/:id_tour",
+        path: "/tournament/:id_tour/:id_type",
         element: (
           <ProtectedRoute>
             <Tournament />
