@@ -9,11 +9,11 @@ import { addElim } from "../apis/eliminitation";
 export default function NewEliminations() {
   const navigate = useNavigate();
   const [errorM, setErrorM] = useState(false);
+  // use state to know how many participants
   const [number, setNumber] = useState(0);
 
   const params = useParams();
   const id_tour = parseInt(params.id_tour);
-  console.log(id_tour);
 
   const yupSchema = yup.object({
     number: yup
@@ -64,11 +64,11 @@ export default function NewEliminations() {
     const participants = values.participants;
     try {
       clearErrors();
+      //checking if the number of participants matches the number of participants inputs added
 
-      console.log(participants.length);
       if (number === participants.length) {
-        const response = await addParticipant(participants, id_tour);
-        const elim = await addElim(number, id_tour);
+        await addParticipant(participants, id_tour);
+        await addElim(number, id_tour);
         navigate("/");
       } else {
         setErrorM(true);

@@ -1,5 +1,4 @@
 import React from "react";
-// import styles from "./Signup.module.scss";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -41,7 +40,6 @@ const Signup = () => {
   });
 
   const submit = handleSubmit(async (values) => {
-    console.log(values);
     try {
       clearErrors();
       await createUser(values);

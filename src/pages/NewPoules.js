@@ -9,6 +9,7 @@ import { addPoule } from "../apis/poule";
 export default function NewPoules() {
   const navigate = useNavigate();
   const [errorM, setErrorM] = useState(false);
+  // use state to know how many participants
   const [number, setNumber] = useState(0);
 
   const params = useParams();
@@ -63,11 +64,10 @@ export default function NewPoules() {
     const participants = values.participants;
     try {
       clearErrors();
-
-      console.log(participants.length);
+      //checking if the number of participants matches the number of participants inputs added
       if (number === participants.length) {
-        const response = await addParticipant(participants, id_tour);
-        const randomPoules = await addPoule(number, id_tour);
+        await addParticipant(participants, id_tour);
+        await addPoule(number, id_tour);
         navigate("/");
       } else {
         setErrorM(true);

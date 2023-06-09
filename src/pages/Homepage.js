@@ -10,6 +10,7 @@ export default function Homepage() {
   const [allTournaments, setAllTournaments] = useState([]);
 
   useEffect(() => {
+    //function to display all the tournaments created by the user logged in
     async function getTournamentsForUser(id_user) {
       try {
         const response = await getUserTournaments(id_user);
@@ -18,6 +19,7 @@ export default function Homepage() {
         console.log(error);
       }
     }
+    //function to get all the tournaments from the DB
     async function getTournaments() {
       try {
         const response = await getAllTournaments();
@@ -27,6 +29,9 @@ export default function Homepage() {
       }
     }
 
+    //we check if user is logged in
+    // yes : we get all their tournaments
+    // no : we get all the tournaments from the DB
     if (user !== null) {
       const id_user = user.id_user;
       getTournamentsForUser(id_user);
@@ -38,9 +43,12 @@ export default function Homepage() {
     }
   }, []);
 
-  console.log(allTournaments);
   return (
     <div className="hpTourContainer flex flexc ">
+      {/* condition to check if the user tournaments array is empty
+      yes : we check if there is any tournament in the DB and display them
+      if not display the message 
+      */}
       {tournaments.length !== 0 ? (
         <>
           <h1>Vos tournois</h1>

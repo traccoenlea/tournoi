@@ -39,7 +39,6 @@ const Signin = () => {
 
   const submit = handleSubmit(async (values) => {
     try {
-      console.log("dans le try");
       clearErrors();
       await signin(values);
       navigate("/");

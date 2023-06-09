@@ -29,13 +29,10 @@ export default function NewTournament() {
     try {
       clearErrors();
       const response = await addTournament(values);
-      console.log("response");
-      console.log(response);
+      // getting the id of the last inserted row to redirect after
       const id_tour = response.insertId;
-      console.log(id_tour);
       if (response !== 0) {
-        console.log("on est ici");
-        console.log(values.type);
+        // redirect to add participants depending on the type of tournament
         if (values.type == 1) {
           navigate(`/newEliminations/${id_tour}`);
         } else if (values.type == 2) {

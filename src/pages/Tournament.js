@@ -33,7 +33,6 @@ export default function Tournament() {
             const number = response.length;
             //using the slice method to get pairs of participants
             for (let y = 0; y < number; y++) {
-              console.log("y : " + y);
               const sliced = response.slice(y, y + 2);
 
               //adding the pairs to the use state array to map into in the return
@@ -59,7 +58,6 @@ export default function Tournament() {
           const response = await getPoules(id_tour);
           //using slice method to get 4 participants = 1 poule
           for (let i = 0; i < response.length; i++) {
-            console.log(i);
             const sliced = response.slice(i, i + 4);
             setPoules((poules) => [...poules, sliced]);
             i = i + 3;
@@ -96,10 +94,12 @@ export default function Tournament() {
       </div>
 
       <div className="flex flexflow elimContainer">
+        {/* mapping into elim array to get the pairs */}
         {elim.map((elim, i) => (
           <div key={i} className="flex flexc jcc elim">
             <h2>Match {i + 1}</h2>
             <div className="flex">
+              {/* mapping into each pairs to get the participants */}
               {elim.map((part, i) => (
                 <div className="flex mauto jcc tac">
                   <h3>{part.name}</h3>
