@@ -58,7 +58,28 @@ h3 {
 }
 
 .poules {
-  border: 5px solid grey;
+  border: 5px solid #2c3c5c;
+  border-radius: 1rem;
+  margin: 10px;
+  min-width: 150px;
+  max-width: 300px;
+}
+
+.elim {
+  min-width: 150px;
+  max-width: 300px;
+  border: 3px solid #2c3c5c;
+  margin: 20px;
+  border-radius: 0.5rem;
+}
+
+hr {
+  background: #2c3c5c;
+  width: 50%;
+  height: 5px;
+  border: none;
+  border-radius: 0.25rem;
+  margin: auto;
 }
 
 .hpTourContainer {

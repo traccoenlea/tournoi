@@ -23,3 +23,8 @@ export async function getAllTournaments() {
   const response = await fetch(`${API_TOUR}/getAllTournaments`);
   return response.json();
 }
+
+export async function getATournament(id_tour) {
+  const response = await fetch(`${API_TOUR}/getATournament?id=${id_tour}`);
+  return response.json();
+}
