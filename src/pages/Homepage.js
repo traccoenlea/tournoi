@@ -12,7 +12,6 @@ export default function Homepage() {
   useEffect(() => {
     async function getTournamentsForUser(id_user) {
       try {
-        console.log("on est ici");
         const response = await getUserTournaments(id_user);
         setTournaments(response);
       } catch (error) {
@@ -31,40 +30,63 @@ export default function Homepage() {
     if (user !== null) {
       const id_user = user.id_user;
       getTournamentsForUser(id_user);
+      if (tournaments.length === 0) {
+        getTournaments();
+      }
     } else {
       getTournaments();
     }
   }, []);
 
-  console.log(tournaments);
+  console.log(allTournaments);
   return (
-    <div className="flex flexflow">
+    <div className="hpTourContainer flex flexc ">
       {tournaments.length !== 0 ? (
         <>
-          {tournaments.map((tour, i) => (
-            <NavLink to={`/tournament/${tour.id_tour}/${tour.id_type}`}>
-              <div key={i}>
-                <h2>{tour.name_tour}</h2>
-                <p>{tour.name_type}</p>
+          <h1>Vos tournois</h1>
+          <div className="flex flexflow jca">
+            {tournaments.map((tour, i) => (
+              <div
+                className={`${
+                  tour.id_type === 1 ? "hpElim" : "hpPoules"
+                } hpTourCard`}
+                key={i}
+              >
+                <NavLink to={`/tournament/${tour.id_tour}/${tour.id_type}`}>
+                  <div className="flex flexc jcc">
+                    <h2>{tour.name_tour}</h2>
+                    <h4>{tour.name_type}</h4>
+                  </div>
+                </NavLink>
               </div>
-            </NavLink>
-          ))}
+            ))}
+          </div>
         </>
       ) : (
         <>
           {allTournaments.length !== 0 ? (
             <>
-              {allTournaments.map((tour, y) => (
-                <NavLink to={`/tournament/${tour.id_tour}/${tour.id_type}`}>
-                  <div key={y}>
-                    <h2>{tour.name_tour}</h2>
-                    <p>{tour.name_type}</p>
+              <h1>Tous les tournois</h1>
+              <div className="flex flexflow jca">
+                {allTournaments.map((tour, y) => (
+                  <div
+                    key={y}
+                    className={`${
+                      tour.id_type === 1 ? "hpElim" : "hpPoules"
+                    } hpTourCard`}
+                  >
+                    <NavLink to={`/tournament/${tour.id_tour}/${tour.id_type}`}>
+                      <div>
+                        <h2>{tour.name_tour}</h2>
+                        <p>{tour.name_type}</p>
+                      </div>
+                    </NavLink>
                   </div>
-                </NavLink>
-              ))}
+                ))}
+              </div>
             </>
           ) : (
-            <h1>Aucun tournoi dans notre base de données</h1>
+            <h1 className="mt30">Aucun tournoi dans notre base de données</h1>
           )}
         </>
       )}

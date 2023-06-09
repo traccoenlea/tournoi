@@ -51,22 +51,20 @@ const Signup = () => {
     }
   });
   return (
-    <div
-      className={`flex-fill d-flex align-items-center justify-content-center`}
-    >
-      <form onSubmit={submit} className={`d-flex flex-column card p20 `}>
-        <h2 className="mb10">Inscription</h2>
-        <div className="mb10 d-flex flex-column">
+    <div className="flex mauto">
+      <form onSubmit={submit}>
+        <h2 className="mb30">Inscription</h2>
+        <div className="flex flexc mb30">
           <label htmlFor="name">Nom</label>
           <input type="text" name="name" {...register("name")} />
           {errors.name && <p className="form-error">{errors.name.message}</p>}
         </div>
-        <div className="mb10 d-flex flex-column">
+        <div className="flex flexc mb30">
           <label htmlFor="email">Email</label>
           <input type="email" name="email" {...register("email")} />
           {errors.email && <p className="form-error">{errors.email.message}</p>}
         </div>
-        <div className="mb10 d-flex flex-column">
+        <div className="flex flexc mb30">
           <label htmlFor="password">Mot de passe</label>
           <input type="password" name="password" {...register("password")} />
           {errors.password && (

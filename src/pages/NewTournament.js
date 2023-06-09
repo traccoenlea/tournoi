@@ -50,8 +50,8 @@ export default function NewTournament() {
   }
 
   return (
-    <div>
-      <form className="flex flexc mauto tac" onSubmit={handleSubmit(submit)}>
+    <div className="flex mauto mt30">
+      <form className="" onSubmit={handleSubmit(submit)}>
         <div className="flex flexc mb30 maw mauto">
           <label>Nom du tournoi : </label>
           <input type="text" id="name" {...register("name")} />

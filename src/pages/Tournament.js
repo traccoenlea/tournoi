@@ -4,28 +4,29 @@ import { getPoules } from "../apis/poule";
 import { getEliminations } from "../apis/eliminitation";
 
 export default function Tournament() {
+  // getting data from the link
   const params = useParams();
   const id_tour = parseInt(params.id_tour);
   const id_type = parseInt(params.id_type);
+  // use state to put all the poules data
   const [poules, setPoules] = useState([]);
+  // use state to put all the eliminations data
   const [elim, setElim] = useState([]);
 
   //get the data from poules ou from elim
   useEffect(() => {
     async function getDataFromTournament(id_tour) {
       if (id_type === 1) {
-        console.log("c elim");
+        //check if the eliminations array is empty to get data from DB
         if (elim.length === 0) {
-          console.log("on est bien là");
           try {
             const response = await getEliminations(id_tour);
             const number = response.length;
+            //using the slice method to get pairs of participants
             for (let y = 0; y < number; y++) {
               console.log("y : " + y);
               const sliced = response.slice(y, y + 2);
 
-              console.log(sliced[0]);
-              console.log(sliced[1]);
               setElim((elim) => [
                 ...elim,
                 [
@@ -36,7 +37,6 @@ export default function Tournament() {
                   },
                 ],
               ]);
-              // }
 
               y = y + 1;
             }
@@ -45,10 +45,9 @@ export default function Tournament() {
           }
         }
       } else if (id_type === 2) {
-        console.log("poules.length");
-        console.log(poules.length);
         try {
           const response = await getPoules(id_tour);
+          //using slice method to get 4 participants = 1 poule
           for (let i = 0; i < response.length; i++) {
             console.log(i);
             const sliced = response.slice(i, i + 4);
@@ -63,15 +62,11 @@ export default function Tournament() {
     getDataFromTournament(id_tour);
   }, []);
 
-  //   console.log("poules");
-  console.log(poules);
-  console.log(elim);
-
   return (
     <div>
       <h1>Dans la page tournament {id_tour}</h1>
 
-      <div className="flex">
+      <div className="flex ">
         {poules.map((poules, i) => (
           <div key={i} className="flex flexc poules">
             {poules.map((poule, i) => (

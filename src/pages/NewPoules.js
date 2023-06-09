@@ -78,7 +78,7 @@ export default function NewPoules() {
   }
 
   return (
-    <div>
+    <div className="flex flexc mauto">
       <h1>Ajouter les participants de votre tournoi à poules</h1>
 
       <h3>
@@ -86,26 +86,37 @@ export default function NewPoules() {
         des poules de 4
       </h3>
 
-      <form onSubmit={handleSubmit(submit)}>
-        <label htmlFor="number">Nombre de participants : </label>
-        <input
-          type="number"
-          id="number"
-          name="number"
-          step={4}
-          min={4}
-          {...register("number")}
-        />
-        {errors?.number && <p>{errors.number.message}</p>}
-        <div>
-          Les noms des participants :
-          <button onClick={addPart}>Ajouter un participant</button>
+      <form className="flex flexc" onSubmit={handleSubmit(submit)}>
+        <div className="flex flexc mauto mb30">
+          <label htmlFor="number">Nombre de participants : </label>
+          <input
+            type="number"
+            id="number"
+            name="number"
+            step={4}
+            min={4}
+            {...register("number")}
+          />
+          {errors?.number && <p>{errors.number.message}</p>}
+        </div>
+        <div className="flex flexc mauto mb30">
+          <h4>Les noms des participants :</h4>
+          <button onClick={addPart} className="smallBtn">
+            Ajouter un participant
+          </button>
           <ol>
             {fields.map((p, i) => (
               <Fragment key={i}>
                 <li>
-                  <input {...register(`participants[${i}].name`)} type="text" />
-                  <button onClick={() => deletePart(i)}>Supprimer</button>
+                  <div className="flex jcb">
+                    <input
+                      {...register(`participants[${i}].name`)}
+                      type="text"
+                    />
+                    <button className="smallBtn" onClick={() => deletePart(i)}>
+                      Supprimer
+                    </button>
+                  </div>
                 </li>
                 {errors.participants?.length &&
                   errors.participants[i]?.name && (

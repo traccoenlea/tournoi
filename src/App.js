@@ -6,14 +6,14 @@ import UsersProvider from "./components/UsersProvider/UsersProvider";
 function App() {
   const user = useLoaderData();
   return (
-    <div>
-      <UsersProvider>
-        <Header />
+    <UsersProvider>
+      <Header />
+      <div className="appContainer flex mauto">
         <Suspense>
           <Outlet />
         </Suspense>
-      </UsersProvider>
-    </div>
+      </div>
+    </UsersProvider>
   );
 }
 

@@ -8,6 +8,7 @@ export default function Header() {
   return (
     <div className="header flex jcb">
       <NavLink to="/">Homepage</NavLink>
+      <NavLink to="/basketball">Basketball</NavLink>
       {user ? (
         <>
           <NavLink to="/createTournament">Créer un tournoi</NavLink>

@@ -7,26 +7,105 @@ h6 {
   margin: 10px;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
-  box-sizing: 0;
-  margin: 0;
+  background: #eaf0f7;
+  min-height: 100vh;
+  min-width: 100vh;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+.appContainer {
+  text-align: center;
+  a {
+    color: #2c3c5c;
+    text-decoration: none;
+    font-size: 20px;
+    &:hover {
+      color: #5f9ea0;
+      transition: 0.3s ease-in-out;
+    }
+  }
 }
 
 .header {
-  padding: 10px 50px;
   height: 50px;
-  background: #2c3c5c;
+  padding: 10px 50px;
   a {
-    color: white;
+    color: #2c3c5c;
     text-decoration: none;
     font-size: 30px;
     &:hover {
-      color: cadetblue;
+      color: #5f9ea0;
       transition: 0.3s ease-in-out;
+      text-decoration: overline;
     }
   }
 }
 
 .poules {
   border: 5px solid grey;
+}
+
+.hpTourContainer {
+  width: 100%;
+
+  .hpTourCard {
+    margin-top: 20px;
+    border-radius: 2rem;
+    min-width: 200px;
+    max-width: 500px;
+    padding: 20px;
+    border: 3px solid;
+    h2,
+    h4 {
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .hpElim {
+    border-color: #0480fc;
+    &:hover {
+      border-color: #2c3c5c;
+    }
+    a {
+      color: #0480fc;
+      &:hover {
+        color: #2c3c5c;
+        transition: 0.3s ease-in-out;
+      }
+    }
+  }
+  .hpPoules {
+    border-color: #748494;
+    &:hover {
+      border-color: #2c3c5c;
+    }
+    a {
+      color: #748494;
+      &:hover {
+        color: #2c3c5c;
+        transition: 0.3s ease-in-out;
+      }
+    }
+  }
+}
+
+.form-error {
+  color: red;
+  font-style: italic;
 }

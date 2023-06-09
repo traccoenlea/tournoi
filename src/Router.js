@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import NewPoules from "./pages/NewPoules";
 import NewEliminations from "./pages/NewEliminations";
 import Tournament from "./pages/Tournament";
+import Basketball from "./pages/Basketball";
 
 export const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
             <Tournament />
           </ProtectedRoute>
         ),
+      },
+      {
+        path: "/basketball",
+        element: <Basketball />,
       },
     ],
   },
