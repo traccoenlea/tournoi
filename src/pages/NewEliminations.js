@@ -50,6 +50,7 @@ export default function NewEliminations() {
   });
 
   function addPart() {
+    setErrorM(false);
     append({
       name: "",
     });
@@ -59,17 +60,24 @@ export default function NewEliminations() {
     remove(index);
   }
 
+  function getNumber(e) {
+    console.log(e);
+    setNumber(e);
+  }
+
   async function submit(values) {
-    setNumber(values.number);
     const participants = values.participants;
+    console.log(participants.length);
+
     try {
       clearErrors();
       //checking if the number of participants matches the number of participants inputs added
-
-      if (number === participants.length) {
+      if (number == participants.length) {
+        setErrorM(false);
         await addParticipant(participants, id_tour);
         await addElim(number, id_tour);
         navigate("/");
+        console.log("ici");
       } else {
         setErrorM(true);
       }
@@ -97,6 +105,7 @@ export default function NewEliminations() {
             step={2}
             min={4}
             {...register("number")}
+            onBlur={(e) => getNumber(e.target.value)}
           />
           {errors?.number && <p>{errors.number.message}</p>}
         </div>
@@ -105,25 +114,31 @@ export default function NewEliminations() {
           <button onClick={addPart} className="smallBtn">
             Ajouter un participant
           </button>
+
           <ol>
             {fields.map((p, i) => (
-              <Fragment key={i}>
-                <li>
-                  <div className="flex jcb">
+              <div className="participantsList" key={i}>
+                <div className="flex flexstart">
+                  <li>
                     <input
                       {...register(`participants[${i}].name`)}
                       type="text"
+                      className="flex jcc flexc mauto"
                     />
-                    <button className="smallBtn" onClick={() => deletePart(i)}>
-                      Supprimer
-                    </button>
-                  </div>
-                </li>
-                {errors.participants?.length &&
-                  errors.participants[i]?.name && (
-                    <p>{errors.participants[i].name.message}</p>
-                  )}
-              </Fragment>
+                  </li>
+                  <button className="smallBtn" onClick={() => deletePart(i)}>
+                    Supprimer
+                  </button>
+                </div>
+                <div className="maw tal mb30">
+                  {errors.participants?.length &&
+                    errors.participants[i]?.name && (
+                      <div className="mt10">
+                        {errors.participants[i].name.message}
+                      </div>
+                    )}
+                </div>
+              </div>
             ))}
           </ol>
         </div>

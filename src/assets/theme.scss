@@ -73,6 +73,18 @@ h3 {
   border-radius: 0.5rem;
 }
 
+.participantsList {
+  width: 375px;
+
+  input {
+    margin-left: 5px;
+  }
+
+  div:nth-child(2) {
+    margin-left: 5px;
+  }
+}
+
 hr {
   background: #2c3c5c;
   width: 50%;
@@ -98,6 +110,7 @@ hr {
       padding: 0;
     }
   }
+
   .hpElim {
     border-color: #0480fc;
     &:hover {
@@ -111,6 +124,7 @@ hr {
       }
     }
   }
+
   .hpPoules {
     border-color: #748494;
     &:hover {

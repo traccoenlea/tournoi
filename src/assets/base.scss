@@ -9,6 +9,10 @@
   flex-flow: row wrap;
 }
 
+.flexstart {
+  justify-content: flex-start;
+}
+
 .jcc {
   justify-content: center;
 }
@@ -43,6 +47,10 @@
 
 .mauto {
   margin: auto;
+}
+
+.mt5 {
+  margin-top: 5px;
 }
 
 .m30 {
@@ -91,6 +99,7 @@ select {
   box-shadow: 0px 0px 5px #5f9ea0bf;
   text-shadow: 0px 0px 5px #5f9ea0bf;
   max-width: 300px;
+  margin-bottom: 10px;
 }
 
 label {
