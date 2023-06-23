@@ -43,16 +43,32 @@ h3 {
 }
 
 .header {
-  height: 50px;
+  height: 75px;
   padding: 10px 50px;
+
+  border-bottom: 5px solid #2c3c5c;
+  border-radius: 20px;
+  margin-bottom: 20px;
+
   a {
     color: #2c3c5c;
     text-decoration: none;
     font-size: 30px;
+    width: 200px;
     &:hover {
       color: #5f9ea0;
       transition: 0.3s ease-in-out;
       text-decoration: overline;
+    }
+  }
+
+  .homepageHeader {
+    width: 500px;
+  }
+
+  .tournamentHeader {
+    div:first-child {
+      width: 600px;
     }
   }
 }
@@ -126,12 +142,12 @@ hr {
   }
 
   .hpPoules {
-    border-color: #748494;
+    border-color: #5f9ea0;
     &:hover {
       border-color: #2c3c5c;
     }
     a {
-      color: #748494;
+      color: #5f9ea0;
       &:hover {
         color: #2c3c5c;
         transition: 0.3s ease-in-out;

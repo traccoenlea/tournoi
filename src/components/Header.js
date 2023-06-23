@@ -7,18 +7,36 @@ export default function Header() {
 
   return (
     <div className="header flex jcb">
-      <NavLink to="/">Homepage</NavLink>
-      <NavLink to="/basketball">Basketball</NavLink>
+      <div className="homepageHeader flex jcc">
+        <NavLink to="/" className="tac">
+          Tournois
+        </NavLink>
+        <NavLink to="/basketball" className="tar">
+          Basketball
+        </NavLink>
+      </div>
       {user ? (
-        <>
-          <NavLink to="/createTournament">Créer un tournoi</NavLink>
-          <NavLink onClick={() => signout()}>Déconnexion</NavLink>
-        </>
+        <div className="tournamentHeader flex">
+          <div>
+            <NavLink to="/createTournament" className="tac">
+              Créer un tournoi
+            </NavLink>
+          </div>
+          <div>
+            <NavLink onClick={() => signout()} className="flex flexend">
+              Déconnexion
+            </NavLink>
+          </div>
+        </div>
       ) : (
-        <>
-          <NavLink to="/signin">Se connecter</NavLink>
-          <NavLink to="/signup">S'inscrire</NavLink>
-        </>
+        <div className="flex">
+          <NavLink to="/signin" className="tac">
+            Se connecter
+          </NavLink>
+          <NavLink to="/signup" className="tac">
+            S'inscrire
+          </NavLink>
+        </div>
       )}
     </div>
   );

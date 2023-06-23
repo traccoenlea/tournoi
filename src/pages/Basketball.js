@@ -28,36 +28,29 @@ export default function Basketball() {
   const [teamsList, setTeamList] = useState([]);
   const usedIndexes = [];
 
-  let n = 0;
-  while (n < 3) {
-    console.log(n);
-  }
-
   useEffect(() => {
     async function getRandomArray() {
-      //   const interval = setInterval(() => {
-      //     if (usedIndexes.length === teams.length) {
-      //       clearInterval(interval);
-      //       return;
-      //     }
+      const interval = setInterval(() => {
+        if (usedIndexes.length === teams.length) {
+          clearInterval(interval);
+          return;
+        }
 
-      //     let randomIndex;
-      //     do {
-      //       randomIndex = Math.floor(Math.random() * teams.length);
-      //     } while (usedIndexes.includes(randomIndex));
+        let randomIndex;
+        do {
+          randomIndex = Math.floor(Math.random() * teams.length);
+        } while (usedIndexes.includes(randomIndex));
 
-      //     usedIndexes.push(randomIndex);
-      //     const randomName = teams[randomIndex];
-      //     console.log(randomName);
-      //     setTeamList((teamsList) => [...teamsList, randomName]);
-      //     console.log(teamsList);
-      //   });
-      // }
-
-      getRandomArray();
+        usedIndexes.push(randomIndex);
+        const randomName = teams[randomIndex];
+        console.log(randomName);
+        setTeamList((teamsList) => [...teamsList, randomName]);
+        console.log(teamsList);
+      });
     }
-  });
-  // }, []);
+
+    getRandomArray();
+  }, []);
 
   return (
     <div className="mauto mt50">
