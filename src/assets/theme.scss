@@ -160,3 +160,87 @@ hr {
   color: red;
   font-style: italic;
 }
+
+//HEADER
+.header {
+  color: #2c3c5c;
+  .mobileMenu {
+    display: none;
+    a {
+      font-size: 2em;
+    }
+  }
+
+  i {
+    color: #2c3c5c;
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .headerMobile {
+    display: none;
+    width: auto;
+  }
+
+  .headerDesktop {
+    width: 350px;
+  }
+
+  @media (max-width: 992px) {
+    .headerDesktop {
+      display: none;
+    }
+    .headerMobile {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .mobileDesktop {
+      display: none;
+    }
+    .mobileMenu {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 600px) {
+    background: purple;
+    .mobileDesktop {
+      display: none;
+    }
+  }
+}
+
+.mobileMenuNav {
+  background: rgba(4, 128, 252, 0.5);
+  backdrop-filter: blur(10px);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+
+  .containerMobile {
+    height: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    .connexionMobile {
+      height: 200px;
+      hr {
+        margin: 0 auto;
+      }
+      div:nth-child(2) {
+        height: 150px;
+      }
+    }
+  }
+  .closeMobile {
+    font-size: 2em;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 10px 20px 0 0;
+  }
+}

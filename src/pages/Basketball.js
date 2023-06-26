@@ -53,7 +53,7 @@ export default function Basketball() {
   }, []);
 
   return (
-    <div className="mauto mt50">
+    <div className="mauto mt30">
       <h1>Les équipes de basket</h1>
       <ol className="mt30">
         {teamsList.map((team, i) => (

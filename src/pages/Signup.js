@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { createUser } from "../apis/users";
 
 const Signup = () => {
@@ -49,7 +49,7 @@ const Signup = () => {
     }
   });
   return (
-    <div className="flex mauto">
+    <div className="flex flexc mauto">
       <form onSubmit={submit}>
         <h2 className="mb30">Inscription</h2>
         <div className="flex flexc mb30">
@@ -78,6 +78,12 @@ const Signup = () => {
           </button>
         </div>
       </form>
+
+      <div className="mt30">
+        <h3>
+          Déjà inscrit ? <NavLink to="/signin">Se connecter</NavLink>
+        </h3>
+      </div>
     </div>
   );
 };
