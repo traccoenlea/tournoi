@@ -89,7 +89,7 @@ export default function NewPoules() {
       <h1>Ajouter les participants de votre tournoi à poules</h1>
 
       <h3>
-        Le nombre de participants ne peut être qu'un multiple de 4 pour faire
+        Le nombre de participants ne peut être qu'un multiple de 8 pour faire
         des poules de 4
       </h3>
 
@@ -100,8 +100,9 @@ export default function NewPoules() {
             type="number"
             id="number"
             name="number"
-            step={4}
-            min={4}
+            step={8}
+            min={8}
+            max={80}
             {...register("number")}
             onBlur={(e) => getNumber(e.target.value)}
           />

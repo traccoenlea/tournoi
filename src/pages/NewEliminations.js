@@ -77,7 +77,6 @@ export default function NewEliminations() {
         await addParticipant(participants, id_tour);
         await addElim(number, id_tour);
         navigate("/");
-        console.log("ici");
       } else {
         setErrorM(true);
       }
@@ -91,7 +90,7 @@ export default function NewEliminations() {
       <h1>Ajouter les participants de votre tournoi à éliminations directes</h1>
 
       <h3>
-        Le nombre de participants ne peut être qu'un multiple de 2 pour avoir
+        Le nombre de participants ne peut être qu'un multiple de 4 pour avoir
         des faces à faces directs
       </h3>
 
@@ -102,7 +101,7 @@ export default function NewEliminations() {
             type="number"
             id="number"
             name="number"
-            step={2}
+            step={4}
             min={4}
             {...register("number")}
             onBlur={(e) => getNumber(e.target.value)}
