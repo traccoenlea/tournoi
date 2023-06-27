@@ -204,13 +204,6 @@ hr {
       display: flex;
     }
   }
-
-  @media (max-width: 600px) {
-    background: purple;
-    .mobileDesktop {
-      display: none;
-    }
-  }
 }
 
 .mobileMenuNav {
